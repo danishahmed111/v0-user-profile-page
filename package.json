@@ -1,6 +1,11 @@
 {
-  "name": "my-project",
-  "version": "0.1.0",
+  "name": "user-profile-manager",
+  "version": "1.0.0",
+  "description": "A modern user profile management application by DANISH AHMED KM",
+  "author": {
+    "name": "DANISH AHMED KM",
+    "email": "danishahmed012320@yahoo.in"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
