@@ -135,14 +135,14 @@ Update a user profile
 **Request Body:**
 ```json
 {
-  "name": "John Doe",
-  "email": "john@example.com",
+  "name": "DANISH AHMED KM",
+  "email": "danishahmed0123200@gmail.com",
   "bio": "Description",
-  "phone": "+1 234 567 8900",
-  "location": "City, Country",
-  "twitter": "username",
+  "phone": "+91 9148424154",
+  "location": "kolar, india",
+  "twitter": "danishahmedkm",
   "linkedin": "username",
-  "github": "username"
+  "github": "danishahmed111"
 }
 ```
 
