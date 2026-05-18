@@ -1,35 +1,193 @@
-# v0-user-profile-page
+# User Profile Manager
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+A professional user profile management application built with Next.js, React, and Supabase.
 
-## Built with v0
+**Application Owner:** DANISH AHMED KM  
+**Email:** danishahmed012320@yahoo.in
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+## Features
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_XmeWdrDyKVLgzPfR33VpvcZSuOaq)
+✨ **Profile Management** - Create and manage your professional profile  
+🔗 **Social Integration** - Link social media profiles (Twitter, LinkedIn, GitHub)  
+🌓 **Dark Mode** - Theme switching support  
+📱 **Responsive Design** - Mobile-first approach  
+🔐 **Secure** - Environment-based configuration for sensitive data  
+
+## Tech Stack
+
+- **Framework:** Next.js 16.2.6
+- **UI Components:** Shadcn/ui + Radix UI
+- **Styling:** Tailwind CSS
+- **Database:** Supabase
+- **Forms:** React Hook Form + Zod
+- **Notifications:** Sonner
+- **Icons:** Lucide React
+- **Type Safety:** TypeScript
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+
+- npm or yarn
+- Supabase account
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+git clone <repository-url>
+cd v0-user-profile-page
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+# Edit .env.local with your Supabase credentials
+```
 
-## Learn More
+4. Run the development server:
+```bash
+npm run dev
+```
 
-To learn more, take a look at the following resources:
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+## Configuration
 
-<a href="https://v0.app/chat/api/kiro/clone/danishahmed111/v0-user-profile-page" alt="Open in Kiro"><img src="https://pdgvvgmkdvyeydso.public.blob.vercel-storage.com/open%20in%20kiro.svg?sanitize=true" /></a>
+### Environment Variables
+
+Create a `.env.local` file with the following variables:
+
+```env
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+
+# App Owner
+NEXT_PUBLIC_APP_OWNER_NAME=DANISH AHMED KM
+NEXT_PUBLIC_APP_OWNER_EMAIL=danishahmed012320@yahoo.in
+```
+
+## Project Structure
+
+```
+v0-user-profile-page/
+├── app/
+│   ├── layout.tsx              # Root layout
+│   ├── page.tsx                # Home page
+│   ├── profile/
+│   │   ├── page.tsx            # Profile page
+│   │   └── components/
+│   │       ├── profile-header.tsx
+│   │       └── profile-form.tsx
+│   ├── api/
+│   │   └── profile/
+│   │       └── route.ts        # Profile API endpoint
+│   └── globals.css             # Global styles
+├── components/
+│   ├── ui/                     # Shadcn UI components
+│   ├── theme-provider.tsx      # Theme provider
+│   └── ...
+├── lib/
+│   ├── config.ts               # App configuration
+│   └── utils.ts                # Utility functions
+├── .env.example                # Environment template
+├── .env.local                  # Local environment (git-ignored)
+├── package.json
+├── tsconfig.json
+└── README.md
+```
+
+## API Routes
+
+### GET /api/profile
+Fetch a user profile by email
+
+**Query Parameters:**
+- `email` (required): User email
+
+**Response:**
+```json
+{
+  "id": "uuid",
+  "name": "John Doe",
+  "email": "john@example.com",
+  "bio": "Description",
+  "phone": "+1 234 567 8900",
+  "location": "City, Country",
+  "twitter": "username",
+  "linkedin": "username",
+  "github": "username",
+  "created_at": "timestamp",
+  "updated_at": "timestamp"
+}
+```
+
+### PUT /api/profile
+Update a user profile
+
+**Request Body:**
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "bio": "Description",
+  "phone": "+1 234 567 8900",
+  "location": "City, Country",
+  "twitter": "username",
+  "linkedin": "username",
+  "github": "username"
+}
+```
+
+## Database Schema
+
+### Profiles Table
+
+```sql
+CREATE TABLE profiles (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name TEXT NOT NULL,
+  email TEXT UNIQUE NOT NULL,
+  bio TEXT,
+  phone TEXT,
+  location TEXT,
+  twitter TEXT,
+  linkedin TEXT,
+  github TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+## Security
+
+See [SECURITY.md](SECURITY.md) for security policies and best practices.
+
+## License
+
+MIT License - see LICENSE file for details
+
+## Support
+
+For issues or questions, please contact:
+- **Email:** danishahmed012320@yahoo.in
+- **Repository:** https://github.com/danishahmed111/v0-user-profile-page
+
+---
+
+**Version:** 1.0.0  
+**Last Updated:** 2026-05-18
